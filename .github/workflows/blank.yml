@@ -49,6 +49,7 @@ jobs:
             using: composite
             steps:
             - name: Run
+              shell: bash
               id: run
               run: echo dynamic steps
           DYNAMIC_USES_EOF
