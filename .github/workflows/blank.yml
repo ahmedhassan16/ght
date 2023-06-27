@@ -51,8 +51,8 @@ jobs:
             - name: customDynamicAction
               shell: bash
               run: echo dynamic action 1 - ${{ github.event.repository.updated_at}}
-          DYNAMIC_USES_EOF &&
-          mkdir -p ./.dynamic-action2-uses &&
+          DYNAMIC_USES_EOF
+          && mkdir -p ./.dynamic-action2-uses &&
           cat <<'DYNAMIC_USES_EOF' >./.dynamic-action2-uses/action.yml
           outputs:
             outputs:
@@ -68,7 +68,3 @@ jobs:
         uses: ./.dynamic-action1-uses
       - name: action2
         uses: ./.dynamic-action2-uses
-      - name: Cleanup
-        if: always()
-        shell: bash
-        run: rm -rf ./.tmp-dynamic-uses
