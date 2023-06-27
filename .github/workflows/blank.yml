@@ -50,8 +50,7 @@ jobs:
             steps:
             - name: Run
               id: run
-              run: |
-                echo dynamic steps
+              run: echo dynamic steps
           DYNAMIC_USES_EOF
       - name: Run
         id: run
