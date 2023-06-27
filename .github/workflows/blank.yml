@@ -36,7 +36,6 @@ jobs:
           echo test, and deploy your project.
   dynamicSteps:
     runs-on: ubuntu-latest
-    using: composite
     steps:
       - name: Setup
         shell: bash
