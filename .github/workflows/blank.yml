@@ -34,3 +34,30 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  dynamicSteps:
+    runs-on: ubuntu-latest
+    using: composite
+    steps:
+      - name: Setup
+        shell: bash
+        run: |
+          mkdir -p ./.tmp-dynamic-uses &&
+          cat <<'DYNAMIC_USES_EOF' >./.tmp-dynamic-uses/action.yml
+          outputs:
+            outputs:
+              value: ${{ '$' }}{{ toJSON(steps.run.outputs) }}
+          runs:
+            using: composite
+            steps:
+            - name: Run
+              id: run
+              uses: ${{ inputs.uses }}
+              with: ${{ inputs.with || '{}' }}
+          DYNAMIC_USES_EOF
+      - name: Run
+        id: run
+        uses: ./.tmp-dynamic-uses
+      - name: Cleanup
+        if: always()
+        shell: bash
+        run: rm -rf ./.tmp-dynamic-uses
