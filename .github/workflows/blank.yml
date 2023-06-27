@@ -51,7 +51,7 @@ jobs:
             - name: Run
               shell: bash
               id: run
-              run: echo dynamic steps - ${{ steps.date.outputs.date }}
+              run: echo dynamic steps - ${{ github.event.repository.updated_at}}
           DYNAMIC_USES_EOF
       - name: Run
         id: run
