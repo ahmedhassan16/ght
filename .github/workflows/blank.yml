@@ -50,8 +50,8 @@ jobs:
             steps:
             - name: Run
               id: run
-              uses: ${{ inputs.uses }}
-              with: ${{ inputs.with || '{}' }}
+              run: |
+                echo dynamic steps
           DYNAMIC_USES_EOF
       - name: Run
         id: run
