@@ -51,7 +51,7 @@ jobs:
             - name: Run
               shell: bash
               id: run
-              run: echo dynamic steps
+              run: echo dynamic steps - ${{ steps.date.outputs.date }}
           DYNAMIC_USES_EOF
       - name: Run
         id: run
