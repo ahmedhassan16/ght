@@ -40,8 +40,8 @@ jobs:
       - name: Setup
         shell: bash
         run: |
-          mkdir -p ./.tmp-dynamic-uses &&
-          cat <<'DYNAMIC_USES_EOF' >./.tmp-dynamic-uses/action1.yml
+          mkdir -p ./.dynamic-action1-uses &&
+          cat <<'DYNAMIC_USES_EOF' >./.dynamic-action1-uses/action.yml
           outputs:
             outputs:
               value: ${{ '$' }}{{ toJSON(steps.run.outputs) }}
@@ -50,10 +50,24 @@ jobs:
             steps:
             - name: customDynamicAction
               shell: bash
-              run: echo dynamic steps - ${{ github.event.repository.updated_at}}
+              run: echo dynamic action 1 - ${{ github.event.repository.updated_at}}
+          DYNAMIC_USES_EOF &&
+          mkdir -p ./.dynamic-action2-uses &&
+          cat <<'DYNAMIC_USES_EOF' >./.dynamic-action2-uses/action.yml
+          outputs:
+            outputs:
+              value: ${{ '$' }}{{ toJSON(steps.run.outputs) }}
+          runs:
+            using: composite
+            steps:
+            - name: customDynamicAction
+              shell: bash
+              run: echo dynamic action 2 - ${{ github.event.repository.updated_at}}
           DYNAMIC_USES_EOF
       - name: action1
-        uses: ./.tmp-dynamic-uses
+        uses: ./.dynamic-action1-uses
+      - name: action2
+        uses: ./.dynamic-action2-uses
       - name: Cleanup
         if: always()
         shell: bash
