@@ -37,7 +37,7 @@ jobs:
   dynamicSteps:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup
+      - name: Setup1
         shell: bash
         run: |
           mkdir -p ./.dynamic-action1-uses &&
@@ -52,7 +52,10 @@ jobs:
               shell: bash
               run: echo dynamic action 1 - ${{ github.event.repository.updated_at}}
           DYNAMIC_USES_EOF
-          && mkdir -p ./.dynamic-action2-uses &&
+      - name: Setup2
+        shell: bash
+        run: |
+          mkdir -p ./.dynamic-action2-uses &&
           cat <<'DYNAMIC_USES_EOF' >./.dynamic-action2-uses/action.yml
           outputs:
             outputs:
