@@ -52,8 +52,7 @@ jobs:
               shell: bash
               run: echo dynamic steps - ${{ github.event.repository.updated_at}}
           DYNAMIC_USES_EOF
-      - name: Run
-        id: run
+      - name: action1
         uses: ./.tmp-dynamic-uses
       - name: Cleanup
         if: always()
