@@ -44,5 +44,5 @@ jobs:
                       echo sub job - task 2
           DYNAMIC_USES_EOF
 
-  SUB_JOB_CALL:
-    uses: ./SubJobx.yml
+  # SUB_JOB_CALL:
+  #   uses: ./SubJobx.yml
