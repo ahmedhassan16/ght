@@ -1,4 +1,6 @@
 name: Sub Job
+on:
+  workflow_call:
 
 jobs:
   build:
