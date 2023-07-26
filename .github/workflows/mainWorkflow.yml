@@ -44,9 +44,9 @@ jobs:
                       echo sub job - task 2
           DYNAMIC_USES_EOF
 
-      - name: Main Job Task 2
+      - name: display SubJobx.yml
         shell: bash
-        run: ls
+        run: cat SubJobx.yml
 
   # SUB_JOB_CALL:
   #   uses: ./SubJobx.yml
