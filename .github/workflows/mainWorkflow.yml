@@ -19,8 +19,8 @@ jobs:
         run: |
           echo Main Job Task 2
 
-  SUB_JOB_CALL:
-    runs-on: ubuntu-latest
-    extends:
-      # Reference the job from the separate file
-      - ./.github/workflows/SubJob.yml
+  # SUB_JOB_CALL:
+  #   runs-on: ubuntu-latest
+  #   extends:
+  #     # Reference the job from the separate file
+  #     - ./.github/workflows/SubJob.yml
