@@ -3,7 +3,7 @@ on:
   workflow_call:
 
 jobs:
-  build:
+  Sub_Job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

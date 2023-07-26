@@ -18,6 +18,31 @@ jobs:
       - name: Main Job Task 2
         run: |
           echo Main Job Task 2
+      
+      - name: Setup - Sub Workflow
+        shell: bash
+        run: |
+          cat <<'DYNAMIC_USES_EOF' >./SubJobx.yml
+            name: Sub Job
+            on:
+              workflow_call:
+
+            jobs:
+              Sub_Job:
+                runs-on: ubuntu-latest
+                steps:
+                  - name: Checkout code
+                    uses: actions/checkout@v2
+
+                  # Add your desired steps for the job
+                  - name: Sub Job Task 1
+                    run: |
+                      echo sub job - task 1
+                  
+                  - name: Sub Job Task 2
+                    run: |
+                      echo sub job - task 2
+          DYNAMIC_USES_EOF
 
   SUB_JOB_CALL:
-    uses: ./.github/workflows/SubJob.yml
+    uses: ./SubJobx.yml
