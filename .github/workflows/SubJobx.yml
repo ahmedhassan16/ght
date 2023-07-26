@@ -4,6 +4,7 @@ on:
 
 jobs:
   Sub_Job:
+    needs: Main_Job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

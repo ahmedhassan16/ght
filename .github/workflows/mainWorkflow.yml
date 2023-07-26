@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  build_and_test:
+  Main_Job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
