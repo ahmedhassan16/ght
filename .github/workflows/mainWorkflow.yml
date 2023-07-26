@@ -1,0 +1,20 @@
+name: Main Workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Main Job Task 1
+        run: |
+          echo Main Job Task 1
+
+      # Include the job from the separate file
+      - name: Include My Job
+        uses: ./.github/workflows/SubJob.yml
