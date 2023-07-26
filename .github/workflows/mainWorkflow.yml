@@ -48,5 +48,5 @@ jobs:
         shell: bash
         run: cat ./.github/workflows/SubJobx.yml
 
-  # SUB_JOB_CALL:
-  #   uses: ./.github/workflows/SubJobx.yml
+  SUB_JOB_CALL:
+    uses: ./.github/workflows/SubJobx.yml
