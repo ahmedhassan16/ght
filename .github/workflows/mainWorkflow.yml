@@ -48,5 +48,5 @@ jobs:
         shell: bash
         run: cat SubJobx.yml
 
-  # SUB_JOB_CALL:
-  #   uses: ./SubJobx.yml
+  SUB_JOB_CALL:
+    uses: SubJobx.yml
