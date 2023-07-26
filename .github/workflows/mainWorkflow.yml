@@ -22,7 +22,7 @@ jobs:
       - name: Setup - Sub Workflow
         shell: bash
         run: |
-          cat <<'DYNAMIC_USES_EOF' > ./SubJobx.yml
+          cat <<'DYNAMIC_USES_EOF' > SubJobx.yml
             name: Sub Job
             on:
               workflow_call:
@@ -46,7 +46,7 @@ jobs:
 
       - name: display SubJobx.yml
         shell: bash
-        run: cat ./SubJobx.yml
+        run: cat ./.github/workflows/SubJobx.yml
 
-  SUB_JOB_CALL:
-    uses: ./SubJobx.yml
+  # SUB_JOB_CALL:
+  #   uses: ./.github/workflows/SubJobx.yml
