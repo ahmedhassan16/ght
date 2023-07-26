@@ -1,0 +1,17 @@
+name: Sub Job
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add your desired steps for the job
+      - name: Sub Job Task 1
+        run: |
+          echo sub job - task 1
+      
+      - name: Sub Job Task 2
+        run: |
+          echo sub job - task 2

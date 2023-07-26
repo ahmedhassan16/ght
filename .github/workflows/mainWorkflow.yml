@@ -15,6 +15,12 @@ jobs:
         run: |
           echo Main Job Task 1
 
-      # Include the job from the separate file
-      - name: Include My Job
-        uses: ./.github/workflows/SubJob
+      - name: Main Job Task 2
+        run: |
+          echo Main Job Task 2
+
+  SUB_JOB_CALL:
+    runs-on: ubuntu-latest
+    extends:
+      # Reference the job from the separate file
+      - ./.github/workflows/SubJob.yml
