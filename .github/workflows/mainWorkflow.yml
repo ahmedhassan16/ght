@@ -49,5 +49,8 @@ jobs:
         run: cat ./.github/workflows/SubJobx.yml
 
   SUB_JOB_CALL:
-    needs: Main_Job
-    uses: ./.github/workflows/SubJobx.yml
+    for i in 1 2
+    do
+      needs: Main_Job
+      uses: ./.github/workflows/SubJobx.yml
+    done
