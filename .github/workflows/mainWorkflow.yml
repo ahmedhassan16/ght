@@ -17,4 +17,4 @@ jobs:
 
       # Include the job from the separate file
       - name: Include My Job
-        uses: ./.github/workflows/SubJob.yml
+        uses: ./.github/workflows/SubJob
