@@ -23,10 +23,3 @@ jobs:
         with:
           name: my-artifact
           path: .github/workflows/*.*
-
-  SUB_JOB_CALL:
-    for i in 1 2
-    do
-      needs: Main_Job
-      uses: ./.github/workflows/SubJobx.yml
-    done
