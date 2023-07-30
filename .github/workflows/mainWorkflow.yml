@@ -18,6 +18,11 @@ jobs:
       - name: Main Job Task 2
         run: |
           echo Main Job Task 2
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: .github/workflows/*.*
 
   SUB_JOB_CALL:
     for i in 1 2
