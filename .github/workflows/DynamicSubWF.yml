@@ -10,7 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          path: repo
+      - uses: actions/checkout@v3
+        with:
           repository: ahmedhassan16/artifacts
+          path: artifacts
 
       - name: Publish Workflow
-        uses: ./.github/actions/PublishWorkflow
+        uses: ./repo/.github/actions/PublishWorkflow
