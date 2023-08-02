@@ -1,7 +1,7 @@
 name: Test Actions
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "PublishWorkflow" ]
   workflow_dispatch:
 
 jobs:
@@ -9,7 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: action1
-        uses: ./.github/actions/copyFiles
-      - name: action2
-        uses: ./.github/actions/echoMessage
+      - name: Publish Workflow
+        uses: ./.github/actions/PublishWorkflow
