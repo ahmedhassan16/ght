@@ -1,6 +1,4 @@
 name: Echo action
-outputs:
-  value: ${{ '$' }}{{ toJSON(steps.run.outputs) }}
 runs:
   using: composite
   steps:
