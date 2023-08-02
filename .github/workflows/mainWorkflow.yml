@@ -11,6 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Publish to Sharepoint
+        uses: obrassard/action-sharepoint-publish@v1.1.1
+        with:
+          site_url: 'https://mathworks-my.sharepoint.com/personal/ahmedh_mathworks_com'
+          library_folder: 'Artifacts/github'
+          sharepoint_client_id: 4cd89c8c-40ea-4720-a32a-6fc0fea807e7
+          sharepoint_client_secret: uomt+FEqalX/WLnR8vY3D1TgWAOWcHDLQCF0kaUIYNc=
+          
       - name: Main Job Task 1
         run: |
           echo Main Job Task 1
