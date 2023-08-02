@@ -1,6 +1,4 @@
-name: Copu files
-outputs:
-  value: ${{ '$' }}{{ toJSON(steps.run.outputs) }}
+name: Copy files
 runs:
   using: composite
   steps:
