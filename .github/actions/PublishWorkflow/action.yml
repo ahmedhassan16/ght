@@ -1,4 +1,4 @@
-name: Echo action
+name: Publish Workflow
 runs:
   using: composite
   steps:
