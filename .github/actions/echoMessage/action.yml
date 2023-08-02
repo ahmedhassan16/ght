@@ -1,8 +1,9 @@
+name: Echo action
 outputs:
   value: ${{ '$' }}{{ toJSON(steps.run.outputs) }}
 runs:
   using: composite
   steps:
-  - name: customDynamicAction
+  - name: customAction
     shell: bash
-    run: echo action 2 - ${{ github.event.repository.updated_at}}
+    run: echo "action 2 - ${{ github.event.repository.updated_at}}"
