@@ -2,6 +2,6 @@ name: Publish Workflow
 runs:
   using: composite
   steps:
-  - name: customAction
+  - name: Commit Generated File
     shell: bash
     run: echo "action 2 - ${{ github.event.repository.updated_at}}"
