@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Cloning repo
+        uses: actions/checkout@v2
 
       - name: Publish to Sharepoint
         uses: obrassard/action-sharepoint-publish@v1.1.1
