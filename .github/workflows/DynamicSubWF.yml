@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Publish Workflow
-        uses: ./.github/actions/PublishWorkflow
         with:
           repository: ahmedhassan16/artifacts
+
+      - name: Publish Workflow
+        uses: ./.github/actions/PublishWorkflow
