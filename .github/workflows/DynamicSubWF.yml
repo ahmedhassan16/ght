@@ -18,3 +18,14 @@ jobs:
 
       - name: Publish Workflow
         uses: ./repo/.github/actions/PublishWorkflow
+      
+      - name: Commit Generated File
+        shell: bash
+        run: cp repo/*.*  artifacts
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Add the very useful text file'
+          new_branch: custom-new-branch
+          add: 'sample.jpeg'
+          cwd: './artifacts/'
