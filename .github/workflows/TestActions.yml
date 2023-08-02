@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: action1
-        uses: ./.github/workflows/actions/copyFiles
+        uses: ./.github/actions/copyFiles
       - name: action2
-        uses: actions/echoMessage
+        uses: ./.github/actions/echoMessage
