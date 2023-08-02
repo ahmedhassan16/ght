@@ -1,0 +1,15 @@
+name: Test Actions
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: action1
+        uses: copyFiles
+      - name: action2
+        uses: echoMessage
