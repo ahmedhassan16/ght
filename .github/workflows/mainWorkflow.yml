@@ -19,7 +19,7 @@ jobs:
         with:
           site_url: 'https://mathworks-my.sharepoint.com/personal/ahmedh_mathworks_com'
           library_folder: 'Artifacts/github'
-          file_path: '*.yml'
+          file_path: 'readme.txt'
           sharepoint_client_id: '4cd89c8c-40ea-4720-a32a-6fc0fea807e7'
           sharepoint_client_secret: 'uomt+FEqalX/WLnR8vY3D1TgWAOWcHDLQCF0kaUIYNc='
           
