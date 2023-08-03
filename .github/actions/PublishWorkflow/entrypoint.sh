@@ -17,7 +17,7 @@ fi
 
 if [ -z "$destination_branch" ]
 then
-  echo "Destination branch can not be empty"
+  destination_branch="workflows/$GITHUB_SHA"
   return 1
 fi
 
