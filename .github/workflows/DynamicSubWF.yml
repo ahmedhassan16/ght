@@ -24,7 +24,7 @@ jobs:
       - name: Pushes test file
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: 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
+          API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }}
         with:
           source_file: 'sample.jpeg'
           user_email: 'ah.mahmoudhassan@gmail.com'
