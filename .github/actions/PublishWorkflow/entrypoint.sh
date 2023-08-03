@@ -30,21 +30,20 @@ fi
 
 if [ -z "$user_email" ]
 then
-  $user_email=$(git log -1 --pretty=format:'%ae')
+  user_email=$(git log -1 --pretty=format:'%ae')
 fi
 
 if [ -z "$user_name" ]
 then
-  $user_name=$(git log -1 --pretty=format:'%an')
+  user_name=$(git log -1 --pretty=format:'%an')
 fi
 
-
-printenv source_files_pattern
-printenv destination_repo
-printenv destination_branch
-printenv commit_message
-printenv user_email
-printenv user_name
+echo "$source_files_pattern"
+echo "$destination_repo"
+echo "$destination_branch"
+echo "$commit_message"
+echo "$user_email"
+echo "$user_name"
 # echo "Cloning destination git repository"
 # git config --global user.email "$INPUT_USER_EMAIL"
 # git config --global user.name "$INPUT_USER_NAME"
