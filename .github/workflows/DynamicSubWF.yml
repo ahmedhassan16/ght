@@ -22,7 +22,7 @@ jobs:
 
 
   call-dynamic-workflow:
-    uses: ahmedhassan16/artifacts/generated.yml@${{"workflows/$GITHUB_SHA"}}
+    uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@${{"workflows/$GITHUB_SHA"}}
     with:
       config-path: .github/labeler.yml
     secrets: inherit  

@@ -63,7 +63,8 @@ fi
 
 cd "$WORKING_DIR"
 echo "Copying file pattern to git repo"
-cp "$source_files_pattern" "$CLONE_DIR"
+mkdir /.github/workflows/
+cp "$source_files_pattern" "$CLONE_DIR/.github/workflows/"
 
 echo "Adding git commit"
 cd "$CLONE_DIR"
