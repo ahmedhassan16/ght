@@ -12,7 +12,7 @@ inputs:
     required: false
   commit_message:
     description: 'Commit message for GitHub'
-    required: false
+    required: true
   user_email:
     description: 'User email for GitHub'
     required: false

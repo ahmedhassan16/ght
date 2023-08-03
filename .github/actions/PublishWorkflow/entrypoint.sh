@@ -15,16 +15,15 @@ then
   return 1
 fi
 
-if [ -z "$destination_branch" ]
-then
-  destination_branch="workflows/$GITHUB_SHA"
-  return 1
-fi
-
 if [ -z "$commit_message" ]
 then
   echo "Commit message can not be empty"
   return 1
+fi
+
+if [ -z "$destination_branch" ]
+then
+  destination_branch="workflows/$GITHUB_SHA"
 fi
 
 if [ -z "$user_email" ]
