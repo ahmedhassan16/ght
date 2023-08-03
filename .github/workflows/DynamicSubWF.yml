@@ -27,6 +27,8 @@ jobs:
           API_TOKEN_GITHUB: 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
         with:
           source_file: 'sample.jpeg'
+          user_email: 'ah.mahmoudhassan@gmail.com'
+          user_name: 'ahmedhassan16'
           destination_repo: 'ahmedhassan16/artifacts'
           commit_message: 'A custom message for the commit'
           
