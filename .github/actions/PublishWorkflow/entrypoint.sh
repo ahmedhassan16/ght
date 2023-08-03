@@ -42,19 +42,12 @@ then
   api_token="$API_TOKEN_GITHUB"
 fi
 
-# echo "$source_files_pattern"
-# echo "$destination_repo"
-# echo "$destination_branch"
-# echo "$commit_message"
-# echo "$user_email"
-# echo "$user_name"
-
 echo "Cloning destination git repository"
 git config --global user.email "$user_email"
 git config --global user.name "$user_name"
 
 CLONE_DIR=$(mktemp -d)
-git clone --single-branch --branch $destination_branch "https://x-access-token:$api_token@github.com/$destination_repo.git" "$CLONE_DIR"
+git clone --single-branch "https://x-access-token:$api_token@github.com/$destination_repo.git" "$CLONE_DIR"
 
 echo "Copying file pattern to git repo"
 cp -R "$source_files_pattern" "$CLONE_DIR"
