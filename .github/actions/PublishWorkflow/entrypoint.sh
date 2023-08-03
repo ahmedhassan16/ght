@@ -64,7 +64,8 @@ fi
 
 cd "$WORKING_DIR"
 echo "Copying file pattern to git repo"
-cp -R "$source_files_pattern" "$CLONE_DIR"
+ls
+cp "$source_files_pattern" "$CLONE_DIR"
 cd "$CLONE_DIR"
 
 echo "Adding git commit"
