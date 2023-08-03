@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 set -e
@@ -38,56 +37,47 @@ then
   user_name=$(git log -1 --pretty=format:'%an')
 fi
 
-echo "$source_files_pattern"
-echo "$destination_repo"
-echo "$destination_branch"
-echo "$commit_message"
-echo "$user_email"
-echo "$user_name"
-# echo "Cloning destination git repository"
-# git config --global user.email "$INPUT_USER_EMAIL"
-# git config --global user.name "$INPUT_USER_NAME"
-# git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://x-access-token:$API_TOKEN_GITHUB@$INPUT_GIT_SERVER/$INPUT_DESTINATION_REPO.git" "$CLONE_DIR"
+if [ -z "$api_token" ]
+then
+  api_token="$API_TOKEN_GITHUB"
+fi
 
-# if [ ! -z "$INPUT_RENAME" ]
-# then
-#   echo "Setting new filename: ${INPUT_RENAME}"
-#   DEST_COPY="$CLONE_DIR/$INPUT_DESTINATION_FOLDER/$INPUT_RENAME"
-# else
-#   DEST_COPY="$CLONE_DIR/$INPUT_DESTINATION_FOLDER"
-# fi
+# echo "$source_files_pattern"
+# echo "$destination_repo"
+# echo "$destination_branch"
+# echo "$commit_message"
+# echo "$user_email"
+# echo "$user_name"
 
-# echo "Copying contents to git repo"
-# mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
-# if [ -z "$INPUT_USE_RSYNC" ]
-# then
-#   cp -R "$INPUT_SOURCE_FILE" "$DEST_COPY"
-# else
-#   echo "rsync mode detected"
-#   rsync -avrh "$INPUT_SOURCE_FILE" "$DEST_COPY"
-# fi
+echo "Cloning destination git repository"
+git config --global user.email "$user_email"
+git config --global user.name "$user_name"
 
-# cd "$CLONE_DIR"
+CLONE_DIR=$(mktemp -d)
+git clone --single-branch --branch $destination_branch "https://x-access-token:$api_token@github.com/$destination_repo.git" "$CLONE_DIR"
 
-# if [ ! -z "$INPUT_DESTINATION_BRANCH_CREATE" ]
-# then
-#   echo "Creating new branch: ${INPUT_DESTINATION_BRANCH_CREATE}"
-#   git checkout -b "$INPUT_DESTINATION_BRANCH_CREATE"
-#   OUTPUT_BRANCH="$INPUT_DESTINATION_BRANCH_CREATE"
-# fi
+echo "Copying file pattern to git repo"
+cp -R "$source_files_pattern" "$CLONE_DIR"
 
-# if [ -z "$INPUT_COMMIT_MESSAGE" ]
-# then
-#   INPUT_COMMIT_MESSAGE="Update from https://$INPUT_GIT_SERVER/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
-# fi
+cd "$CLONE_DIR"
 
-# echo "Adding git commit"
-# git add .
-# if git status | grep -q "Changes to be committed"
-# then
-#   git commit --message "$INPUT_COMMIT_MESSAGE"
-#   echo "Pushing git commit"
-#   git push -u origin HEAD:"$OUTPUT_BRANCH"
-# else
-#   echo "No changes detected"
-# fi
+echo "Ensure destination branch: ${destination_branch}"
+if git rev-parse --verify "$destination_branch" >/dev/null 2>&1; then
+    echo "Branch '$destination_branch' exists."
+    git checkout -b "$destination_branch"
+else
+    echo "Branch '$branch_name' does not exist."
+    echo "Creating new branch: ${destination_branch}"
+    git checkout -b "$destination_branch"
+fi
+
+echo "Adding git commit"
+git add .
+if git status | grep -q "Changes to be committed"
+then
+  git commit --message "$commit_message"
+  echo "Pushing git commit"
+  git push -u origin HEAD:"$destination_branch"
+else
+  echo "No changes detected"
+fi

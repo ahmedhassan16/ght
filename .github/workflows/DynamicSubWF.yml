@@ -11,13 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        # with:
-        #   path: repo
-
-      # - uses: actions/checkout@v2
-      #   with:
-      #     repository: ahmedhassan16/artifacts
-      #     path: artifacts
 
       - name: Publish Workflow
         uses: ./.github/actions/PublishWorkflow
@@ -26,8 +19,22 @@ jobs:
           destination_repo: 'ahmedhassan16/artifacts'
           destination_branch: 'workflows/id1'
           commit_message: 'A custom message for the commit'
-          # user_email: 'ah.mahmoudhassan@gmail.com'
-          # user_name: 'ahmedhassan16'
+          api_token: ${{ secrets.PAT_TOKEN }}
+
+
+
+
+
+
+
+
+
+      # - uses: actions/checkout@v2
+      #   with:
+      #     repository: ahmedhassan16/artifacts
+      #     path: artifacts
+
+
 
       
       # - name: Pushes test file
