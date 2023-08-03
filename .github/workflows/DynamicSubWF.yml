@@ -10,13 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           path: repo
       - uses: actions/checkout@v2
         with:
           repository: ahmedhassan16/artifacts
-          persist-credentials: true
           path: artifacts
 
       - name: Publish Workflow
