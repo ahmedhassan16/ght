@@ -24,7 +24,7 @@ runs:
   steps:
     - name: Push file
       shell: bash
-      run: ./github/actions/PublishWorkflow/entrypoint.sh
+      run: ls 
 branding:
   icon: 'git-commit'
   color: 'green'
