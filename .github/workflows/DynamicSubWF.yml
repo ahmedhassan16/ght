@@ -21,28 +21,37 @@ jobs:
       - name: Publish Workflow
         uses: ./repo/.github/actions/PublishWorkflow
       
-      - name: Commit Generated File
-        shell: bash
-        run: |
+      - name: Pushes test file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: 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
+        with:
+          source_file: 'sample.jpeg'
+          destination_repo: 'ahmedhassan16/artifacts'
+          commit_message: 'A custom message for the commit'
           
-          cp repo/*.*  artifacts
-          ls artifacts
-          cd artifacts
-          git config user.name "ahmedhassan16"
-          git config user.email "ah.mahmoudhassan@gmail.com"
+      # - name: Commit Generated File
+      #   shell: bash
+      #   run: |
           
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" || exit 0
+      #     cp repo/*.*  artifacts
+      #     ls artifacts
+      #     cd artifacts
+      #     git config user.name "ahmedhassan16"
+      #     git config user.email "ah.mahmoudhassan@gmail.com"
+          
+      #     git add -A
+      #     timestamp=$(date -u)
+      #     git commit -m "Latest data: ${timestamp}" || exit 0
 
-          PAT=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
-          REPO_URL=https://github.com/ahmedhassan16/artifacts.git
+      #     PAT=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
+      #     REPO_URL=https://github.com/ahmedhassan16/artifacts.git
 
-          git config credential.helper "store --file=.git/credentials"
-          echo "https://$PAT:x-oauth-basic@github.com" >> .git/credentials
+      #     git config credential.helper "store --file=.git/credentials"
+      #     echo "https://$PAT:x-oauth-basic@github.com" >> .git/credentials
 
-          git remote add target $REPO_URL
-          git push target HEAD:main
+      #     git remote add target $REPO_URL
+      #     git push target HEAD:main
       
 
       # - uses: EndBug/add-and-commit@v9
