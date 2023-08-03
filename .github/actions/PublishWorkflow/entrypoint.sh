@@ -5,25 +5,41 @@ set -e
 set -x
 
 printenv user_email
-# if [ -z "$INPUT_SOURCE_FILE" ]
-# then
-#   echo "Source file must be defined"
-#   return 1
-# fi
+if [ -z "$source_files_pattern" ]
+then
+  echo "Source file pattern can not be empty"
+  return 1
+fi
 
-# if [ -z "$INPUT_GIT_SERVER" ]
-# then
-#   INPUT_GIT_SERVER="github.com"
-# fi
+if [ -z "$destination_repo" ]
+then
+  echo "Destination repository can not be empty"
+  return 1
+fi
 
-# if [ -z "$INPUT_DESTINATION_BRANCH" ]
-# then
-#   INPUT_DESTINATION_BRANCH=main
-# fi
-# OUTPUT_BRANCH="$INPUT_DESTINATION_BRANCH"
+if [ -z "$destination_branch" ]
+then
+  echo "Destination branch can not be empty"
+  return 1
+fi
 
-# CLONE_DIR=$(mktemp -d)
+if [ -z "$commit_message" ]
+then
+  echo "Commit message can not be empty"
+  return 1
+fi
 
+if [ -z "$user_email" ]
+then
+  $user_email=$(git log -1 --pretty=format:'%ae')
+fi
+
+if [ -z "$user_name" ]
+then
+  $user_name=$(git log -1 --pretty=format:'%an')
+fi
+
+printenv
 # echo "Cloning destination git repository"
 # git config --global user.email "$INPUT_USER_EMAIL"
 # git config --global user.name "$INPUT_USER_NAME"
