@@ -4,7 +4,6 @@
 set -e
 set -x
 
-printenv user_email
 if [ -z "$source_files_pattern" ]
 then
   echo "Source file pattern can not be empty"
@@ -39,7 +38,13 @@ then
   $user_name=$(git log -1 --pretty=format:'%an')
 fi
 
-printenv
+
+printenv source_files_pattern
+printenv destination_repo
+printenv destination_branch
+printenv commit_message
+printenv user_email
+printenv user_name
 # echo "Cloning destination git repository"
 # git config --global user.email "$INPUT_USER_EMAIL"
 # git config --global user.name "$INPUT_USER_NAME"
