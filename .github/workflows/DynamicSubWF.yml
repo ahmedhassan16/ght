@@ -14,25 +14,25 @@ jobs:
         with:
           path: repo
 
-      - uses: actions/checkout@v2
-        with:
-          repository: ahmedhassan16/artifacts
-          path: artifacts
+      # - uses: actions/checkout@v2
+      #   with:
+      #     repository: ahmedhassan16/artifacts
+      #     path: artifacts
 
-      # - name: Publish Workflow
-      #   uses: ./repo/.github/actions/PublishWorkflow
+      - name: Publish Workflow
+        uses: ./repo/.github/actions/PublishWorkflow
       
-      - name: Pushes test file
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }}
-        with:
-          source_file: 'repo/sample.jpeg'
-          user_email: 'ah.mahmoudhassan@gmail.com'
-          user_name: 'ahmedhassan16'
-          destination_repo: 'ahmedhassan16/artifacts'
-          destination_branch_create: workflows/id1
-          commit_message: 'A custom message for the commit'
+      # - name: Pushes test file
+      #   uses: dmnemec/copy_file_to_another_repo_action@main
+      #   env:
+      #     API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }}
+      #   with:
+      #     source_file: 'repo/sample.jpeg'
+      #     user_email: 'ah.mahmoudhassan@gmail.com'
+      #     user_name: 'ahmedhassan16'
+      #     destination_repo: 'ahmedhassan16/artifacts'
+      #     destination_branch_create: workflows/id1
+      #     commit_message: 'A custom message for the commit'
       
 
 
