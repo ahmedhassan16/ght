@@ -25,11 +25,10 @@ runs:
     - name: Push file
       shell: bash
       run: ${{github.action_path}}/entrypoint.sh
-      args:
-        - ${{ inputs.source-files-pattern }}
-        - ${{ inputs.user-email }}
-        - ${{ inputs.destination-branch }}
-        - ${{ inputs.commit-message }}
+      env:
+        SOURCE_FILES_PATTERN: ${{ inputs.source_files_pattern }}
+        USER_EMAIL: ${{ inputs.user-email }}
+        COMMIT_MESSAGE: ${{ inputs.commit-message }}
 branding:
   icon: 'git-commit'
   color: 'green'
