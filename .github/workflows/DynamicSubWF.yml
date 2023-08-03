@@ -20,7 +20,7 @@ jobs:
       #     path: artifacts
 
       - name: Publish Workflow
-        uses: ./repo/.github/actions/PublishWorkflow
+        uses: ./.github/actions/PublishWorkflow
         with:
           source_files_pattern: 'repo/sample.jpeg'
           destination_repo: 'ahmedhassan16/artifacts'
