@@ -28,8 +28,8 @@ jobs:
           cp repo/*.*  artifacts
           ls artifacts
           cd artifacts
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "ahmedhassan16"
+          git config user.email "ah.mahmoudhassan@gmail.com"
           git add -A
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
