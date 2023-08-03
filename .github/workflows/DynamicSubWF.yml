@@ -22,14 +22,14 @@ jobs:
       # - name: Publish Workflow
       #   uses: ./repo/.github/actions/PublishWorkflow
       
-      # - name: Pushes test file
-      #   uses: dmnemec/copy_file_to_another_repo_action@main
-      #   env:
-      #     API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }}
-      #   with:
-      #     source_file: 'sample.jpeg'
-      #     destination_repo: 'ahmedhassan16/artifacts'
-      #     commit_message: 'A custom message for the commit'
+      - name: Pushes test file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }}
+        with:
+          source_file: 'repo/sample.jpeg'
+          destination_repo: 'ahmedhassan16/artifacts'
+          commit_message: 'A custom message for the commit'
           
       # - name: Commit Generated File
       #   shell: bash
@@ -54,16 +54,16 @@ jobs:
       #     git remote add target $REPO_URL
       #     git push target HEAD:main
       
-      - name: Commit Generated File
-        shell: bash
-        run: |
-          cp repo/*.*  artifacts
-          ls artifacts
+      # - name: Commit Generated File
+      #   shell: bash
+      #   run: |
+      #     cp repo/*.*  artifacts
+      #     ls artifacts
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          message: 'Add the very useful text file'
-          # new_branch: custom-new-branch
-          github_token: ${{ secrets.PAT_TOKEN }}
-          add: 'sample.jpeg'
-          cwd: './artifacts/' 
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     message: 'Add the very useful text file'
+      #     # new_branch: custom-new-branch
+      #     github_token: ${{ secrets.PAT_TOKEN }}
+      #     add: 'sample.jpeg'
+      #     cwd: './artifacts/' 
