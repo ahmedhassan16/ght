@@ -28,6 +28,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }}
         with:
           source_file: 'repo/sample.jpeg'
+          user_email: 'ah.mahmoudhassan@gmail.com'
+          user_name: 'ahmedhassan16'
           destination_repo: 'ahmedhassan16/artifacts'
           commit_message: 'A custom message for the commit'
           
