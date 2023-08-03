@@ -24,27 +24,22 @@ jobs:
       - name: Commit Generated File
         shell: bash
         run: |
-          
           cp repo/*.*  artifacts
           ls artifacts
           cd artifacts
-          git config user.name "ahmedhassan16"
-          git config user.email "ah.mahmoudhassan@gmail.com"
-          
+                    
           git add -A
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
 
-          PAT=$PAT_SECRET
+          PAT=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
           REPO_URL=https://github.com/ahmedhassan16/artifacts.git
 
           git config credential.helper "store --file=.git/credentials"
           echo "https://$PAT:x-oauth-basic@github.com" >> .git/credentials
 
           git remote add target $REPO_URL
-          git push
-        env:
-          PAT_SECRET: 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
+          git push target HEAD:main
       
 
       # - uses: EndBug/add-and-commit@v9
