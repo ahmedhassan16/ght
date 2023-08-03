@@ -31,7 +31,7 @@ jobs:
           user_email: 'ah.mahmoudhassan@gmail.com'
           user_name: 'ahmedhassan16'
           destination_repo: 'ahmedhassan16/artifacts'
-          destination_branch: workflows/id1
+          destination_branch_create: workflows/id1
           commit_message: 'A custom message for the commit'
       
 
