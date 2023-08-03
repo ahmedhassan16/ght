@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: ahmedhassan16/artifacts
+          persist-credentials: true
           path: artifacts
 
       - name: Publish Workflow
