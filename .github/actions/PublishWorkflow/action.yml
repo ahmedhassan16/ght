@@ -20,8 +20,10 @@ inputs:
     description: 'User name for GitHub'
     required: false
 runs:
-  - name: Push file
-    run: bash entrypoint.sh
+  using: "composite"
+  steps:
+    - name: Push file
+      run: bash entrypoint.sh
 branding:
   icon: 'git-commit'
   color: 'green'
