@@ -66,9 +66,10 @@ cd "$WORKING_DIR"
 echo "Copying file pattern to git repo"
 ls
 cp "$source_files_pattern" "$CLONE_DIR"
-cd "$CLONE_DIR"
 
 echo "Adding git commit"
+cd "$CLONE_DIR"
+ls
 git add .
 if git status | grep -q "Changes to be committed"
 then
