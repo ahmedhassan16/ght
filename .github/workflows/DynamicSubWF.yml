@@ -1,8 +1,10 @@
 name: Dynamic Sub-Workflow
 on:
+  workflow_dispatch:
   push:
     branches: [ "PublishWorkflow" ] 
-  workflow_dispatch:
+  permissions:
+    contents: write
 
 jobs:
   build:
