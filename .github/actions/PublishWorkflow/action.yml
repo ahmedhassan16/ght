@@ -1,9 +1,9 @@
 name: 'Publish workflow to another repo'
 description: 'Used for pushing a the generated workflow to another repository'
 inputs:
-  # source_files_pattern:
-  #   description: 'Source file pattern'
-  #   required: true
+  source_files_pattern:
+    description: 'Source file pattern'
+    required: true
   destination_repo:
     description: 'Destination repository'
     required: true
@@ -13,12 +13,12 @@ inputs:
   commit_message:
     description: 'Commit message for GitHub'
     required: false
-  # user_email:
-  #   description: 'User email for GitHub'
-  #   required: false
-  # user_name:
-  #   description: 'User name for GitHub'
-  #   required: false
+  user_email:
+    description: 'User email for GitHub'
+    required: false
+  user_name:
+    description: 'User name for GitHub'
+    required: false
 runs:
   using: "composite"
   steps:
