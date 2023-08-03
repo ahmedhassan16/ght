@@ -24,6 +24,7 @@ jobs:
       - name: Commit Generated File
         shell: bash
         run: |
+          PAT=$PAT_SECRET
           cp repo/*.*  artifacts
           ls artifacts
           cd artifacts
