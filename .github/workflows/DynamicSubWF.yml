@@ -24,10 +24,13 @@ jobs:
       - name: Commit Generated File
         shell: bash
         run: |
+          
           cp repo/*.*  artifacts
           ls artifacts
           cd artifacts
-                    
+          git config user.name "ahmedhassan16"
+          git config user.email "ah.mahmoudhassan@gmail.com"
+          
           git add -A
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
