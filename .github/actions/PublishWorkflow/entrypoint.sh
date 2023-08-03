@@ -49,9 +49,7 @@ git config --global user.name "$user_name"
 CLONE_DIR=$(mktemp -d)
 git clone --single-branch "https://x-access-token:$api_token@github.com/$destination_repo.git" "$CLONE_DIR"
 
-echo "Copying file pattern to git repo"
-cp -R "$source_files_pattern" "$CLONE_DIR"
-
+WORKING_DIR=$(pwd)
 cd "$CLONE_DIR"
 
 echo "Ensure destination branch: ${destination_branch}"
@@ -59,10 +57,15 @@ if git rev-parse --verify "$destination_branch" >/dev/null 2>&1; then
     echo "Branch '$destination_branch' exists."
     git checkout -b "$destination_branch"
 else
-    echo "Branch '$branch_name' does not exist."
+    echo "Branch '$destination_branch' does not exist."
     echo "Creating new branch: ${destination_branch}"
     git checkout -b "$destination_branch"
 fi
+
+cd "$WORKING_DIR"
+echo "Copying file pattern to git repo"
+cp -R "$source_files_pattern" "$CLONE_DIR"
+cd "$CLONE_DIR"
 
 echo "Adding git commit"
 git add .
