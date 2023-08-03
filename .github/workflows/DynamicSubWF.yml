@@ -22,9 +22,9 @@ jobs:
       - name: Publish Workflow
         uses: ./repo/.github/actions/PublishWorkflow
         with:
-          source_files_pattern: repo/sample.jpeg
-          destination_repo: ahmedhassan16/artifacts
-          destination_branch: workflows/id1
+          source_files_pattern: 'repo/sample.jpeg'
+          destination_repo: 'ahmedhassan16/artifacts'
+          destination_branch: 'workflows/id1'
           commit_message: 'A custom message for the commit'
           user_email: 'ah.mahmoudhassan@gmail.com'
           user_name: 'ahmedhassan16'
