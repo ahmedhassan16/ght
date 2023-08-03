@@ -24,7 +24,7 @@ jobs:
       - name: Commit Generated File
         shell: bash
         run: |
-          
+          git clone https://github.com/ahmedhassan16/artifacts.git artifacts
           cp repo/*.*  artifacts
           ls artifacts
           cd artifacts
