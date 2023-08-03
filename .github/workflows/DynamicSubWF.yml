@@ -30,6 +30,9 @@ jobs:
           cd artifacts
           git config user.name "ahmedhassan16"
           git config user.email "ah.mahmoudhassan@gmail.com"
+          git config credential.helper "store --file=.git/credentials"
+          echo "https://$PAT:x-oauth-basic@github.com" >> .git/credentials
+          
           git add -A
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
