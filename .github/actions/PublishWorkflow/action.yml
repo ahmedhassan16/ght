@@ -27,8 +27,8 @@ runs:
       run: ${{github.action_path}}/entrypoint.sh
       env:
         SOURCE_FILES_PATTERN: ${{ inputs.source_files_pattern }}
-        USER_EMAIL: ${{ inputs.user-email }}
-        COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        USER_EMAIL: ${{ inputs.user_email }}
+        COMMIT_MESSAGE: ${{ inputs.commit_message }}
 branding:
   icon: 'git-commit'
   color: 'green'
