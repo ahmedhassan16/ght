@@ -33,6 +33,8 @@ jobs:
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
+        env:
+          PAT_SECRET: "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"
       
 
       # - uses: EndBug/add-and-commit@v9
