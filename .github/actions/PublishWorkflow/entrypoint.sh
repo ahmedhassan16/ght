@@ -4,7 +4,7 @@
 set -e
 set -x
 
-printenv
+printenv user_email
 # if [ -z "$INPUT_SOURCE_FILE" ]
 # then
 #   echo "Source file must be defined"
