@@ -31,4 +31,4 @@ jobs:
           message: 'Add the very useful text file'
           # new_branch: custom-new-branch
           add: 'sample.jpeg'
-          cwd: './artifacts/'
+          cwd: './artifacts/' 
