@@ -15,13 +15,17 @@ jobs:
       - name: Publish Workflow
         uses: ./.github/actions/PublishWorkflow
         with:
-          source_files_pattern: 'sample.jpeg'
+          source_files_pattern: 'generated.yml'
           destination_repo: 'ahmedhassan16/artifacts'
           commit_message: 'A custom message for the commit'
           api_token: ${{ secrets.PAT_TOKEN }}
 
 
-
+  call-dynamic-workflow:
+    uses: ahmedhassan16/artifacts/generated.yml@${{"workflows/$GITHUB_SHA"}}
+    with:
+      config-path: .github/labeler.yml
+    secrets: inherit  
 
 
 
