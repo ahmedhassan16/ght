@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: repo
-      - uses: actions/checkout@v2
-        with:
-          repository: ahmedhassan16/artifacts
-          path: artifacts
+        # with:
+        #   path: repo
+      # - uses: actions/checkout@v2
+      #   with:
+      #     repository: ahmedhassan16/artifacts
+      #     path: artifacts
 
-      - name: Publish Workflow
-        uses: ./repo/.github/actions/PublishWorkflow
+      # - name: Publish Workflow
+      #   uses: ./repo/.github/actions/PublishWorkflow
       
       - name: Pushes test file
         uses: dmnemec/copy_file_to_another_repo_action@main
