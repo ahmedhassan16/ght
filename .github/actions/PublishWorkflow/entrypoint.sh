@@ -3,6 +3,8 @@
 # set -e
 # set -x
 
+printenv
+
 if [ -z "$source_files_pattern" ]
 then
   echo "Source file pattern can not be empty"
