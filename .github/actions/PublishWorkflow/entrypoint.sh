@@ -79,7 +79,7 @@ else
   echo "No changes detected"
 fi
 
-if [ -z "$repo_tag" ]
+if [ ! -z "$repo_tag" ]
 then
   git tag -d "$repo_tag"
   git push origin :refs/tags/"$repo_tag"
