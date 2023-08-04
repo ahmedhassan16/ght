@@ -24,7 +24,7 @@ jobs:
   call-dynamic-workflow:
     - name: Setup1
       shell: bash
-        run: |
+      run: |
           mkdir -p ./.dynamic-action1-uses &&
           cat <<'DYNAMIC_USES_EOF' >./.dynamic-action1-uses/action.yml
           runs:
