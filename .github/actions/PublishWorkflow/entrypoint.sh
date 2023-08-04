@@ -23,7 +23,7 @@ fi
 
 if [ -z "$destination_branch" ]
 then
-  destination_branch="workflows/$GITHUB_SHA"
+  destination_branch="workflows/$GITHUB_SHA/$GITHUB_RUN_ID"
 fi
 
 if [ -z "$user_email" ]
