@@ -1,7 +1,7 @@
 name: Dynamic Reusable Workflow 
 on:
-  push:
-    branches: [ "PublishWorkflow" ] 
+  # push:
+  #   branches: [ "PublishWorkflow" ] 
   workflow_dispatch:
     branches:
       - PublishWorkflow
@@ -24,7 +24,7 @@ jobs:
 
   call-dynamic-workflow: 
     needs: build
-    uses: ahmedhassan16/artifacts/.github/workflows/main.yml@latest
+    uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@latest
 
   clean:
     needs: call-dynamic-workflow
