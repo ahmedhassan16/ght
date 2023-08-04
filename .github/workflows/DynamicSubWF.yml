@@ -21,6 +21,6 @@ jobs:
           api_token: ${{ secrets.PAT_TOKEN }}
 
 
-  call-dynamic-workflow:
+  call-dynamic-workflow: 
     # uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@${{"workflows/$GITHUB_SHA"}} 
     uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@workflows/13420f79b58474f82873e9ade7dc7ec3e552adcd
