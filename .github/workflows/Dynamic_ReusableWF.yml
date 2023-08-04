@@ -1,7 +1,7 @@
 name: Dynamic Reusable Workflow 
 on:
   push:
-    branches: [ "PublishWorkflow" ] 
+    branches: [ "PublishWorkflow" ]
   workflow_dispatch:
 permissions:
   contents: write
