@@ -25,3 +25,12 @@ jobs:
   call-dynamic-workflow: 
     needs: build
     uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@latest
+
+  clean:
+    needs: call-dynamic-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/DeleteBranch
+        with:
+          destination_repo: 'ahmedhassan16/artifacts'
+          api_token: ${{ secrets.PAT_TOKEN }}

@@ -1,18 +1,12 @@
-name: 'Publish workflow to another repo'
-description: 'Used for pushing the generated workflow to another repository'
+name: 'Delete branch from another repo'
+description: 'Used for delete the generated workflow from another repository'
 inputs:
-  source_files_pattern:
-    description: 'Source file pattern'
-    required: true
   destination_repo:
     description: 'Destination repository'
     required: true
   destination_branch:
     description: 'Destination branch for the file'
     required: false
-  commit_message:
-    description: 'Commit message for GitHub'
-    required: true
   user_email:
     description: 'User email for GitHub'
     required: false
@@ -22,24 +16,18 @@ inputs:
   api_token:
     description: 'API token for GitHub'
     required: false
-  repo_tag:
-    description: 'Tag to be added to GitHub repository'
-    required: false
 runs:
   using: "composite"
   steps:
-    - name: Push file
+    - name: Delete branch
       shell: bash
       run: ${{github.action_path}}/entrypoint.sh
       env:
-        source_files_pattern: ${{ inputs.source_files_pattern }}
         destination_repo: ${{ inputs.destination_repo }}
         destination_branch: ${{ inputs.destination_branch }}
-        commit_message: ${{ inputs.commit_message }}
         user_email: ${{ inputs.user_email }}
         user_name: ${{ inputs.user_name }}
         api_token: ${{ inputs.api_token }}
-        repo_tag: ${{ inputs.repo_tag }}
         
 branding:
   icon: 'git-commit'
