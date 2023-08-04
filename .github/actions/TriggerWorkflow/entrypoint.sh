@@ -32,13 +32,13 @@ curl \
 "https://api.github.com/repos/$destination_repo/actions/workflows/$workflow_file/dispatches" \
 -d "{\"ref\":\"$destination_branch\"}"
 
-count=1
+counter=1
 workflow_run_id=''
 while [ -z $workflow_run_id ] || [ $counter -le 5 ]
 do
   echo "Waiting workflow ..." 
   sleep 2
-  counter=$(counter + 1)
+  counter=$($counter + 1)
   workflow_run_id=$(curl -s -H "Authorization: token $api_token" \
     "https://api.github.com/repos/$destination_repo/actions/runs?branch=$destination_branch"  | jq -r '.workflow_runs[0].id')
 done
