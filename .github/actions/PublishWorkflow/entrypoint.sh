@@ -82,6 +82,6 @@ fi
 if [ ! -z "$repo_tag" ]
 then
   git fetch --all --tags
-  git tag -d "$repo_tag"
-  git push origin :refs/tags/"$repo_tag"
+  git tag -fa "$repo_tag"
+  git push origin "$repo_tag" --force
 fi
