@@ -30,14 +30,18 @@ jobs:
       - name: Trigger Workflow
         shell: bash
         run: |
-          echo "https://api.github.com/repos/ahmedhassan16/actions/workflows/generated.yml/dispatche"
-          echo "workflows/${{ github.sha }}/${{ github.run_id }}"
           curl \
           -X POST \
           -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
           "https://api.github.com/repos/ahmedhassan16/artifacts/actions/workflows/generated.yml/dispatches" \
           -d '{"ref":"main"}'
+
+          workflow_run_id=$(curl -s -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+          "https://api.github.com/repos/ahmedhassan16/artifacts/actions/runs" | jq -r '.workflow_runs[0].id')
+
+          workflow_run_url="https://github.com/ahmedhassan16/artifacts/actions/runs/$workflow_run_id"
+          echo "URL of the most recent workflow run: $workflow_run_url"
          
   clean:
     needs: call-dynamic-workflow
