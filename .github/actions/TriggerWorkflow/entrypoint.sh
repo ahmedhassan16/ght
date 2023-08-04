@@ -34,7 +34,7 @@ curl \
 
 
 workflow_run_id=''
-while [ -z $workflow_run_id || $counter -gt 5]
+while [ -z $workflow_run_id ] || [ $counter -gt 5 ]
 do
   echo "Waiting workflow ..." 
   sleep 2
