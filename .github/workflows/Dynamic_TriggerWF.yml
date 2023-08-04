@@ -35,7 +35,7 @@ jobs:
           curl \
           -X POST \
           -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.PAT_TOKEN }}"\
+          -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
           "https://api.github.com/repos/ahmedhassan16/artifacts/actions/workflows/main.yml/dispatches" \
           -d '{"ref":"workflows/${{ github.sha }}/${{ github.run_id }}"}'
          
