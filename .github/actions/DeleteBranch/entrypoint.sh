@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e
+set -x
+
 if [ -z "$destination_repo" ]
 then
   echo "Destination repository can not be empty"
