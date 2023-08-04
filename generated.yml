@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Test task
         shell: bash
-        run: echo 'test generated file version 18'
+        run: echo 'test generated file version 19'
