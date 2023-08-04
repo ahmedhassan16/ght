@@ -38,7 +38,7 @@ while [ -z $workflow_run_id ] || [ $counter -le 5 ]
 do
   echo "Waiting workflow ..." 
   sleep 2
-  ((count++))
+  counter=$(counter + 1)
   workflow_run_id=$(curl -s -H "Authorization: token $api_token" \
     "https://api.github.com/repos/$destination_repo/actions/runs?branch=$destination_branch"  | jq -r '.workflow_runs[0].id')
 done
