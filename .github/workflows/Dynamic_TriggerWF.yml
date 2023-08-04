@@ -1,10 +1,6 @@
 name: Dynamic Triggered WF
 on:
   workflow_dispatch:
-  push:
-    branches: [ "PublishWorkflow" ] 
-permissions:
-  contents: write
 
 jobs:
   build:
