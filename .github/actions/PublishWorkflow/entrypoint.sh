@@ -60,7 +60,7 @@ if [ $? -ne 0 ]; then
 else
   echo "Branch '$destination_branch' exists."
   git fetch origin
-  git checkout "$destination_branch" 
+  git checkout $destination_branch
   git status
 fi
 
