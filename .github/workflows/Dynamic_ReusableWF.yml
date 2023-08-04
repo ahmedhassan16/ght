@@ -1,0 +1,27 @@
+name: Dynamic Reusable Workflow 
+on:
+  push:
+    branches: [ "PublishWorkflow" ] 
+  workflow_dispatch:
+    branches:
+      - PublishWorkflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Publish Workflow
+        uses: ./.github/actions/PublishWorkflow
+        with:
+          source_files_pattern: 'generated.yml'
+          destination_repo: 'ahmedhassan16/artifacts'
+          commit_message: 'A custom message for the commit'
+          api_token: ${{ secrets.PAT_TOKEN }}
+          repo_tag: latest
+
+
+  call-dynamic-workflow: 
+    needs: build
+    uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@latest

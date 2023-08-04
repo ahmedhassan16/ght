@@ -1,7 +1,46 @@
-name: Echo action
+name: 'Publish workflow to another repo'
+description: 'Used for pushing a the generated workflow to another repository'
+inputs:
+  source_files_pattern:
+    description: 'Source file pattern'
+    required: true
+  destination_repo:
+    description: 'Destination repository'
+    required: true
+  destination_branch:
+    description: 'Destination branch for the file'
+    required: false
+  commit_message:
+    description: 'Commit message for GitHub'
+    required: true
+  user_email:
+    description: 'User email for GitHub'
+    required: false
+  user_name:
+    description: 'User name for GitHub'
+    required: false
+  api_token:
+    description: 'API token for GitHub'
+    required: false
+  repo_tag:
+    description: 'Tag to be added to GitHub repository'
+    required: false
 runs:
-  using: composite
+  using: "composite"
   steps:
-  - name: customAction
-    shell: bash
-    run: echo "action 2 - ${{ github.event.repository.updated_at}}"
+    - name: Push file
+      shell: bash
+      run: ${{github.action_path}}/entrypoint.sh
+      env:
+        source_files_pattern: ${{ inputs.source_files_pattern }}
+        destination_repo: ${{ inputs.destination_repo }}
+        destination_branch: ${{ inputs.destination_branch }}
+        commit_message: ${{ inputs.commit_message }}
+        user_email: ${{ inputs.user_email }}
+        user_name: ${{ inputs.user_name }}
+        api_token: ${{ inputs.api_token }}
+        repo_tag: ${{ inputs.repo_tag }}
+        
+branding:
+  icon: 'git-commit'
+  color: 'green'
