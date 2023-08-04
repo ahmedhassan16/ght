@@ -79,3 +79,10 @@ then
 else
   echo "No changes detected"
 fi
+
+if [ ! -z "$repo_tag" ]
+then
+  git fetch --all --tags
+  git tag "$repo_tag" -m "$repo_tag" --force
+  git push origin "$repo_tag" --force
+fi

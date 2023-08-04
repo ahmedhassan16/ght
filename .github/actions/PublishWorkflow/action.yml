@@ -22,6 +22,9 @@ inputs:
   api_token:
     description: 'API token for GitHub'
     required: false
+  repo_tag:
+    description: 'Tag to be added to GitHub repository'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -36,6 +39,7 @@ runs:
         user_email: ${{ inputs.user_email }}
         user_name: ${{ inputs.user_name }}
         api_token: ${{ inputs.api_token }}
+        repo_tag: ${{ inputs.repo_tag }}
         
 branding:
   icon: 'git-commit'
