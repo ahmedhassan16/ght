@@ -54,12 +54,12 @@ cd "$CLONE_DIR"
 echo "Ensure destination branch: ${destination_branch}"
 git fetch origin "$destination_branch" 
 if [ $? -ne 0 ]; then
-    echo "Branch '$destination_branch' exists."
-    git checkout "$destination_branch"
+  echo "Branch '$destination_branch' does not exist."
+  echo "Creating new branch: ${destination_branch}"
+  git checkout -b "$destination_branch"  
 else
-    echo "Branch '$destination_branch' does not exist."
-    echo "Creating new branch: ${destination_branch}"
-    git checkout -b "$destination_branch"
+  echo "Branch '$destination_branch' exists."
+  git checkout "$destination_branch" 
 fi
 
 cd "$WORKING_DIR"
