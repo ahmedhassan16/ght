@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Publish Workflow
         uses: ./.github/actions/PublishWorkflow
@@ -30,7 +30,10 @@ jobs:
     needs: call-dynamic-workflow
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/DeleteBranch
+      - uses: actions/checkout@v3
+
+      - name: Delete branch
+        uses: ./.github/actions/DeleteBranch
         with:
           destination_repo: 'ahmedhassan16/artifacts'
           api_token: ${{ secrets.PAT_TOKEN }}
