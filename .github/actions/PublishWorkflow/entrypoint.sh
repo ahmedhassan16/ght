@@ -1,7 +1,7 @@
 #!/bin/sh
 
-set -e
-set -x
+# set -e
+# set -x
 
 if [ -z "$source_files_pattern" ]
 then
