@@ -1,4 +1,4 @@
-name: Dynamic Reusable Workflow 
+name: Dynamic Trigger Workflow 
 on:
   # push:
   #   branches: [ "PublishWorkflow" ] 
