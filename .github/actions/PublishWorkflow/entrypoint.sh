@@ -52,6 +52,7 @@ WORKING_DIR=$(pwd)
 cd "$CLONE_DIR"
 
 echo "Ensure destination branch: ${destination_branch}"
+git -C ${adjSandboxPath} fetch --all
 if git rev-parse --verify "$destination_branch" >/dev/null 2>&1; then
     echo "Branch '$destination_branch' exists."
     git checkout -b "$destination_branch"
