@@ -30,7 +30,7 @@ curl \
 -H "Accept: application/vnd.github.v3+json" \
 -H "Authorization: token $api_token" \
 "https://api.github.com/repos/$destination_repo/actions/workflows/$workflow_file/dispatches" \
--d '{"ref":"$destination_branch"}'
+-d "{\"ref\":\"$destination_branch\"}"
 
 sleep 10
 
