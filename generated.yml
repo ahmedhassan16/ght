@@ -11,4 +11,4 @@ jobs:
 
       - name: Test task
         shell: bash
-        run: echo 'test generated file version 24'
+        run: echo 'test generated file version 26'
