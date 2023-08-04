@@ -61,6 +61,7 @@ else
   echo "Branch '$destination_branch' exists."
   git fetch origin
   git checkout "$destination_branch" 
+  git status
 fi
 
 cd "$WORKING_DIR"
