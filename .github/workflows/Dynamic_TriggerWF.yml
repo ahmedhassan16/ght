@@ -1,12 +1,16 @@
-name: Dynamic Triggered WF
+name: Dynamic Reusable Workflow 
 on:
+  # push:
+  #   branches: [ "PublishWorkflow" ] 
   workflow_dispatch:
+    branches:
+      - PublishWorkflow
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Publish Workflow
         uses: ./.github/actions/PublishWorkflow
@@ -15,8 +19,33 @@ jobs:
           destination_repo: 'ahmedhassan16/artifacts'
           commit_message: 'A custom message for the commit'
           api_token: ${{ secrets.PAT_TOKEN }}
+          repo_tag: latest
 
 
   call-dynamic-workflow: 
-    # uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@${{"workflows/$GITHUB_SHA"}} 
-    uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@workflows/13420f79b58474f82873e9ade7dc7ec3e552adcd
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Trigger Workflow
+        shell: bash
+        run: |
+          curl \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: token ${{ secrets.PAT_TOKEN }}"\
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/ahmedhassan16/actions/workflows/main.yml/dispatche" \
+          -d '{"ref":"workflows/${{ GITHUB_SHA }}/${{ GITHUB_RUN_ID }}"}'
+         
+  clean:
+    needs: call-dynamic-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Delete branch
+        uses: ./.github/actions/DeleteBranch
+        with:
+          destination_repo: 'ahmedhassan16/artifacts'
+          api_token: ${{ secrets.PAT_TOKEN }}

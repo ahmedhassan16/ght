@@ -1,0 +1,36 @@
+name: 'Delete branch from another repo'
+description: 'Used for delete the generated workflow from another repository'
+inputs:
+  destination_repo:
+    description: 'Destination repository'
+    required: true
+  destination_branch:
+    description: 'Destination branch for the file'
+    required: false
+  workflow_file:
+    description: 'Workflow file path'
+    required: true
+  api_token:
+    description: 'API token for GitHub'
+    required: false
+  webhook_url:
+    description: 'Webhook url for GitHub'
+    required: true
+  webhook_secret:
+    description: 'Webhook url for GitHub'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Delete branch
+      shell: bash
+      run: ${{github.action_path}}/entrypoint.sh
+      env:
+        destination_repo: ${{ inputs.destination_repo }}
+        destination_branch: ${{ inputs.destination_branch }}
+        workflow_file: ${{ inputs.workflow_file }}
+        api_token: ${{ inputs.api_token }}
+        
+branding:
+  icon: 'git-commit'
+  color: 'green'
