@@ -1,0 +1,26 @@
+name: Dynamic Triggered WF
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "PublishWorkflow" ] 
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Publish Workflow
+        uses: ./.github/actions/PublishWorkflow
+        with:
+          source_files_pattern: 'generated.yml'
+          destination_repo: 'ahmedhassan16/artifacts'
+          commit_message: 'A custom message for the commit'
+          api_token: ${{ secrets.PAT_TOKEN }}
+
+
+  call-dynamic-workflow: 
+    # uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@${{"workflows/$GITHUB_SHA"}} 
+    uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@workflows/13420f79b58474f82873e9ade7dc7ec3e552adcd
