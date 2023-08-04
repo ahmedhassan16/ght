@@ -37,7 +37,7 @@ jobs:
           "https://api.github.com/repos/ahmedhassan16/artifacts/actions/workflows/generated.yml/dispatches" \
           -d '{"ref":"main"}')
 
-          echo $response
+          echo "$response"
           workflow_run_id=$(curl -s -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
           "https://api.github.com/repos/ahmedhassan16/artifacts/actions/runs" | jq -r '.workflow_runs[0].id')
 
