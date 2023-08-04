@@ -22,23 +22,11 @@ jobs:
 
 
   call-dynamic-workflow:
-    - name: Setup1
-      shell: bash
-      run: |
-          mkdir -p ./.dynamic-action1-uses &&
-          cat <<'DYNAMIC_USES_EOF' >./.dynamic-action1-uses/action.yml
-          runs:
-            using: composite
-            steps:
-              - uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@${{"workflows/$GITHUB_SHA"}}
-          DYNAMIC_USES_EOF
-    - name: action1
-      uses: ./.dynamic-action1-uses
-    
-
-  #   with:
-  # config-path: .github/labeler.yml
-  #   secrets: inherit  
+    # uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@${{"workflows/$GITHUB_SHA"}}
+    uses: ahmedhassan16/artifacts/.github/workflows/generated.yml@workflows/13420f79b58474f82873e9ade7dc7ec3e552adcd
+    with:
+      config-path: .github/labeler.yml
+    secrets: inherit  
 
 
 
