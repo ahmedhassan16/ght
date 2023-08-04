@@ -10,4 +10,4 @@ jobs:
 
       - name: Test task
         shell: bash
-        run: echo 'test generated file version 21'
+        run: echo 'test generated file version 22'
