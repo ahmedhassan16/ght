@@ -60,6 +60,7 @@ if [ $? -ne 0 ]; then
 else
   echo "Branch '$destination_branch' exists."
   git checkout -b $destination_branch
+  git pull
   git status
 fi
 
