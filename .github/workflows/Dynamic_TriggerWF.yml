@@ -1,5 +1,7 @@
 name: Dynamic Triggered WF
 on:
+  push:
+    branches: [ "PublishWorkflow" ]
   workflow_dispatch:
 
 jobs:
