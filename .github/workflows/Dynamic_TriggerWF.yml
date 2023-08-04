@@ -34,11 +34,16 @@ jobs:
           echo "workflows/${{ github.sha }}/${{ github.run_id }}"
           curl \
           -X POST \
-          -H "Accept: application/vnd.github+json" \
+          -H "Accept: application/vnd.github.v3+json" \
           -H "Authorization: token ${{ secrets.PAT_TOKEN }}"\
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          "https://api.github.com/repos/ahmedhassan16/actions/workflows/main.yml/dispatche" \
+          "https://api.github.com/repos/ahmedhassan16/artifacts/actions/workflows/main.yml/dispatches" \
           -d '{"ref":"workflows/${{ github.sha }}/${{ github.run_id }}"}'
+
+
+
+  
+    
+    -d '{"ref":"main"}'
          
   clean:
     needs: call-dynamic-workflow
