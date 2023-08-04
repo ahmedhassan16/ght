@@ -81,6 +81,7 @@ fi
 
 if [ ! -z "$repo_tag" ]
 then
+  git fetch --all --tags
   git tag -d "$repo_tag"
   git push origin :refs/tags/"$repo_tag"
 fi
