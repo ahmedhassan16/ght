@@ -1,14 +1,14 @@
-name: Generated Workflow
-on:
-  workflow_call:
-  workflow_dispatch:
+    name: Generated Workflow
+    on:
+      workflow_call:
+      workflow_dispatch:
 
-jobs:
-  Test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    jobs:
+      Test:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
 
-      - name: Test task
-        shell: bash
-        run: echo 'test generated file version 31'
+          - name: Test task
+            shell: bash
+            run: echo 'test generated file version 31'
